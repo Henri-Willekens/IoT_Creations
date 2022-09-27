@@ -6,16 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    /**
-     * PRODUCT ATTRIBUTES
-     * $this->attributes['id'] - int - contains the product primary key (id)
-     * $this->attributes['name'] - string - contains the product name
-     * $this->attributes['description'] - string - contains the product description
-     * $this->attributes['image'] - string - contains the product image
-     * $this->attributes['price'] - int - contains the product price
-     * $this->attributes['created_at'] - timestamp - contains the product creation date
-     * $this->attributes['updated_at'] - timestamp - contains the product update date
-     */
+
+    public static function validate($request)
+    {
+        $request->validate([
+            "name" => "required|max:255",
+            "description" => "required",
+            "price" => "required|numeric|gt:0",
+            'image' => 'image',
+        ]);
+    }
 
     public function getId()
     {
@@ -29,7 +29,7 @@ class Product extends Model
 
     public function getName()
     {
-        return strtoupper($this->attributes['name']);
+        return $this->attributes['name'];
     }
 
     public function setName($name)
