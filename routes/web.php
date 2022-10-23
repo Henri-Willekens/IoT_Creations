@@ -17,6 +17,10 @@ Route::get('/', 'App\Http\Controllers\HomeController@index')->name("home.index")
 Route::get('/about', 'App\Http\Controllers\HomeController@about')->name("home.about");
 Route::get('/products', 'App\Http\Controllers\ProductController@index')->name("product.index");
 Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->name("product.show");
+Route::get('/cart', 'App\Http\Controllers\CartController@index')->name("cart.index");
+Route::get('/cart/delete', 'App\Http\Controllers\CartController@delete')->name("cart.delete");
+Route::post('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name("cart.add");
+
 Route::get('/category', 'App\Http\Controllers\CategoryController@index')->name("category.index");
 Route::resource('category', 'App\Http\Controllers\CategoryController');
 
