@@ -8,6 +8,10 @@
           crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link href="{{ asset('/css/admin.css') }}" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"  />
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <title>@yield('title', 'Admin - Online Store')</title>
 </head>
 
@@ -22,6 +26,7 @@
         <ul class="nav flex-column">
             <li><a href="{{ route('admin.home.index') }}" class="nav-link text-white">- Admin - Home</a></li>
             <li><a href="{{ route('admin.product.index') }}" class="nav-link text-white">- Admin - Products</a></li>
+            <li><a href="{{ route('admin.users.index') }}" class="nav-link text-white">- Admin - Users Active</a></li>
             <li>
                 <a href="{{ route('home.index') }}" class="mt-2 btn bg-primary text-white">Go back to the home page</a>
             </li>

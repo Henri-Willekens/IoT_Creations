@@ -20,9 +20,14 @@ Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->nam
 Route::get('/cart', 'App\Http\Controllers\CartController@index')->name("cart.index");
 Route::get('/cart/delete', 'App\Http\Controllers\CartController@delete')->name("cart.delete");
 Route::post('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name("cart.add");
+Route::get('/search', 'ProductController@search');
 
 Route::get('/category', 'App\Http\Controllers\CategoryController@index')->name("category.index");
 Route::resource('category', 'App\Http\Controllers\CategoryController');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/cart/purchase', 'App\Http\Controllers\CartController@purchase')->name("cart.purchase");
+});
 
 Route::middleware('admin')->group(function () {
     Route::get('/admin', 'App\Http\Controllers\Admin\AdminHomeController@index')->name("admin.home.index");
@@ -31,6 +36,8 @@ Route::middleware('admin')->group(function () {
     Route::delete('/admin/products/{id}/delete', 'App\Http\Controllers\Admin\AdminProductController@delete')->name("admin.product.delete");
     Route::get('/admin/products/{id}/edit', 'App\Http\Controllers\Admin\AdminProductController@edit')->name("admin.product.edit");
     Route::put('/admin/products/{id}/update', 'App\Http\Controllers\Admin\AdminProductController@update')->name("admin.product.update");
+    Route::get('/admin/users', 'App\Http\Controllers\Admin\UserStatusController@index')->name("admin.users.index");
+    Route::get('userChangeStatus', 'App\Http\Controllers\Admin\UserStatusController@userChangeStatus');
 });
 
 Auth::routes();

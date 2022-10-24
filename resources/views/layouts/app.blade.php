@@ -16,6 +16,10 @@
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <form class="form-inline my-2 my-lg-0" type="get" action="{{ url('/search') }}">
+            <input class="form-control mr-sm-2" name="query" type="search" placeholder="Search Products" aria-label="Search">
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+        </form>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ms-auto">
                 <a class="nav-link active" href="{{ route('home.index') }}">Home</a>

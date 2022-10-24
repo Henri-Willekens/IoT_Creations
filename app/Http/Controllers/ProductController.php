@@ -24,6 +24,15 @@ class ProductController extends Controller
         $viewData["title"] = $product->getName()." - Online Store";
         $viewData["subtitle"] =  $product->getName()." - Product information";
         $viewData["product"] = $product;
+
         return view('product.show')->with("viewData", $viewData);
+    }
+    public function search()
+    {
+
+        $search_text = $_GET['query'];
+        $products = Product::where('name', 'LIKE', '%'.$search_text.'%')->get();
+
+        return view('product.search', compact('products'));
     }
 }
