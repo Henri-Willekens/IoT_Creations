@@ -48,6 +48,7 @@ class CartController extends Controller
             $viewData = [];
             $viewData["title"] = "Purchase - Online Store";
             $viewData["subtitle"] =  "Purchase Status";
+            $viewData["context"] = "Congratulations, purchase completed.";
 
             return view('cart.purchase')->with("viewData", $viewData);
     }

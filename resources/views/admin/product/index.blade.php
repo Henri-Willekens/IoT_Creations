@@ -43,8 +43,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col">
-                        &nbsp;
+                    <div class="col"><label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Status:</label>
+
+
+
+                                <input type="checkbox" class="toggleswitch toggleactive" @if(true) checked @endif>
+
+
                     </div>
                 </div>
                 <div class="mb-3">
@@ -91,6 +96,20 @@
                         </td>
                     </tr>
                 @endforeach
+                <script>
+
+                    $(document).ready(function(){
+                        $('.toggleswitch').bootstrapToggle();
+                    });
+
+                    $('.toggleactive').on('change', function() {
+                        $.post('/admin/changeStatus/' + "1" + '/active', { active: ($(this).is(':checked')) ? 1 : 0, _token : '{{ csrf_token() }}' }, function(data){
+                            toastr.success("Updated success: The status is " + (data > 1 ? 'enabled' : 'disabled'));
+                        });
+                    });
+
+
+                </script>
                 </tbody>
             </table>
         </div>

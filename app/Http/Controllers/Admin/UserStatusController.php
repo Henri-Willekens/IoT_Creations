@@ -12,25 +12,12 @@ class UserStatusController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
-    {
-        $viewData = [];
-        $viewData["title"] = "Admin Page - Active - Online Store";
-        $users = User::get();
-        return view('admin.users.index', compact('users'))->with("viewData", $viewData);
-    }
 
-    /**
-     * Responds with a welcome message with instructions
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function userChangeStatus(Request $request)
+    public function active(userChangeStatus $request): \Illuminate\Http\Response
     {
-        \Log::info($request->all());
-        $user = User::find($request->user_id);
-        $user->status = $request->status;
-        $user->save();
+        $status = request('active');
+        $request->active = $status;
+        $request->save();
 
         return response()->json(['success'=>'Status change successfully.']);
     }

@@ -16,8 +16,8 @@
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <form class="form-inline my-2 my-lg-0" type="get" action="{{ url('/search') }}">
-            <input class="form-control mr-sm-2" name="query" type="search" placeholder="Search Products" aria-label="Search">
+        <form class="form-inline my-2 my-lg-0" type="get" action="{{ url('/products') }}">
+            <input class="form-control mr-sm-2" name="query" type="search" placeholder="Search Products" aria-label="Search" value="{{ isset($_GET['query']) ? $_GET['query'] : "" }}">
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
         </form>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -25,7 +25,6 @@
                 <a class="nav-link active" href="{{ route('home.index') }}">Home</a>
                 <a class="nav-link active" href="{{ route('product.index') }}">Products</a>
                 <a class="nav-link active" href="{{ route('home.about') }}">About</a>
-                <a class="nav-link active" href="{{ route('category.index') }}">cat</a>
                 <a class="nav-link active" href="{{ route('cart.index') }}">Cart</a>
                 <div class="vr bg-white mx-2 d-none d-lg-block"></div>
                 @guest

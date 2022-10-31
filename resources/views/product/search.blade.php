@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('content')
+    @include('layouts.pages')
     <div class="row">
-        @foreach ($products as $product)
+        @foreach ($viewData["products"] as $product)
             <div class="col-md-4 col-lg-3 mb-2">
                 <div class="card">
                     <img src="{{ asset('/storage/'.$product->getImage()) }}" class="card-img-top img-card">
